@@ -1,0 +1,48 @@
+{
+  "name": "basic-rest-api",
+  "version": "1.0.0",
+  "description": "Example of REST API with Typescript, Express and MongoDB",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "build:windows": "rimraf ./dist && tsc",
+    "dev": "nodemon",
+    "start": "node dist/server.js",
+    "build:start": "npm run dist && npm run start",
+    "build:windows:start": "npm run dist:windows && npm run start",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyagiz/basic-rest-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fyagiz/basic-rest-api/issues"
+  },
+  "homepage": "https://github.com/fyagiz/basic-rest-api#readme",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.14",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^18.7.18",
+    "@types/rimraf": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.23.1",
+    "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  }
+}
