@@ -6,6 +6,7 @@ import config from "./config/config";
 import mongoose from "mongoose";
 
 import healthCheckRouter from "./routers/healthCheckRouter";
+import bookRouter from "./routers/bookRouter";
 
 const NAMESPACE = "Server";
 const router = express();
@@ -37,10 +38,10 @@ router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
-    if (req.method != "GET") {
-        res.header("Access-Control-Allow-Methods", "GET");
+    if (req.method != "GET" && req.method != "POST") {
+        res.header("Access-Control-Allow-Methods", "GET, POST");
         return res.status(405).json({
-            message: "Only HTTP GET method is allowed!",
+            message: "Only HTTP GET and POST methods is allowed!",
         });
     }
 
@@ -49,6 +50,8 @@ router.use((req, res, next) => {
 
 // /healthcheck
 router.use("/api/v1/healthcheck", healthCheckRouter);
+// /book
+router.use("/api/v1/book", bookRouter);
 
 router.use((req, res, next) => {
     const error = new Error("not found");
