@@ -30,4 +30,22 @@ async function addBook(req: Request, res: Response, next: NextFunction) {
         });
 }
 
-export default { addBook };
+async function getBooks(req: Request, res: Response, next: NextFunction) {
+    logger.info(NAMESPACE, `/api/v1/book`);
+
+    Book.find()
+        .exec()
+        .then((result) => {
+            return res.status(200).json({
+                books: result,
+            });
+        })
+        .catch((error) => {
+            return res.status(500).json({
+                message: error.message,
+                error,
+            });
+        });
+}
+
+export default { addBook, getBooks };
